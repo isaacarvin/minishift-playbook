@@ -3,7 +3,7 @@
   hosts: all
   tasks:
   - name: create project
-    k8s:
+    openshift_raw:
       definition:
         apiVersion: v1
         kind: Namespace
