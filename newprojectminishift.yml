@@ -2,9 +2,9 @@
 - name: Hello World Sample
   hosts: all
   tasks:
-  - name: create foo configmap
-    k8s:
-    definition:
+  - name: create project
+     k8s:
+     definition:
       apiVersion: v1
       kind: Namespace
       metadata:
