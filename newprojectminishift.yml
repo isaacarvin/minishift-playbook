@@ -3,7 +3,7 @@
   hosts: all
   tasks:
   - name: create project
-    openshift_raw:
+    community.kubernetes.k8s:
       definition:
         apiVersion: v1
         kind: Namespace
