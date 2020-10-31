@@ -1,0 +1,17 @@
+---
+- name: Hello World Sample
+  hosts: all
+  tasks:
+  - name: create foo configmap
+    k8s:
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+       annotations:
+        openshift.io/description: "{{project_description}}"
+        openshift.io/display-name: "{{project_display_name}}"
+        openshift.io/node-selector: environment="{{project_environment}}"
+       labels:
+        environment:  Vodafone-ECP
+       name: "{{project_name}}"
