@@ -1,6 +1,6 @@
 ---
 - name: minishift project create
-  hosts: all
+  hosts: localhost
   gather_facts: false
   connection: local
 
@@ -8,11 +8,11 @@
     - community.kubernetes
   tasks:
   - name: Create project
-    k8s:
+    community.kubernetes.k8s:
       state: present
       inline:
         kind: ProjectRequest
         metadata:
-          name: "{{project_name}}"
-        displayName: "{{project_display_name}}"
-        description: "{{project_description}}"
+          name: test1
+        displayName: demo1
+        description: testdemo
