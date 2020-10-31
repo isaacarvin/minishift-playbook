@@ -1,17 +1,18 @@
 ---
-- name: Hello World Sample
-  hosts: all
+- name: minishift project create
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  collections:
+    - community.kubernetes
   tasks:
-  - name: create foo configmap
+  - name: Create project
     community.kubernetes.k8s:
-    definition:
-      apiVersion: v1
-      kind: Namespace
-      metadata:
-       annotations:
-        openshift.io/description: "{{project_description}}"
-        openshift.io/display-name: "{{project_display_name}}"
-        openshift.io/node-selector: environment="{{project_environment}}"
-       labels:
-        environment:  Vodafone-ECP
-       name: "{{project_name}}"
+      state: present
+      inline:
+        kind: ProjectRequest
+        metadata:
+          name: "{{project_name}}"
+        displayName: "{{project_display_name}}"
+        description: "{{project_description}}"
