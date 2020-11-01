@@ -8,7 +8,7 @@
     - community.kubernetes
   tasks:
   - name: Create project
-    community.kubernetes.k8s:
+    oc:
       state: present
       inline:
         kind: ProjectRequest
