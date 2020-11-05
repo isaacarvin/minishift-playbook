@@ -1,8 +1,8 @@
 ---
 - name: minishift project create
-  hosts: all
-  gather_facts: false
-  connection: local
+  hosts: localhost
+#  gather_facts: false
+#  connection: local
 
 #  collections:
 #    - community.kubernetes
