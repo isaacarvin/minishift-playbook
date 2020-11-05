@@ -4,6 +4,10 @@
   hosts: all
   gather_facts: false
   connection: local
+  
+  
+  collections:
+    - community.kubernetes
 
   tasks:
     - name: Get a list of all Services in the myapp namespace.
