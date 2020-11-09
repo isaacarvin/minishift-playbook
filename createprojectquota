@@ -1,0 +1,26 @@
+---
+- name: DO create quotas
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+ 
+
+  collections:
+    - community.kubernetes
+  tasks:
+  - name: Create quotas for a project
+    k8s:
+      state: present
+      inline:
+        api_version: v1
+        kind: ResourceQuota
+        metadata:
+          name: "{{project_name}}"
+          namespace: "{{project_name}}"
+        spec:
+          hard:
+            pods: "4" 
+            limits.cpu: "2"
+            limits.memory: "2016Mib"
+            requests.storage: "3Gib"
