@@ -16,4 +16,8 @@
           name: "{{project_name}}"
         displayName: "{{project_display_name}}"
         description: "{{project_description}}"
+      register: output  
+      
+  - name: dipaly output
+    debug: var = output
 
