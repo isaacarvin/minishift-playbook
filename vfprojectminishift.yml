@@ -18,6 +18,6 @@
         description: "{{project_description}}"
       register: output  
       
-  - name: dipaly output
-    debug: var = output
+    name: dipaly output
+  - debug: var = output
 
