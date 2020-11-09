@@ -1,17 +1,15 @@
   
 ---
-- name: minishift project create
+- name: Installing Apache MSI
   hosts: all
-  gather_facts: false
-  connection: local
-  
-  
-  collections:
-    - community.kubernetes
 
   tasks:
-    - name: Get a list of all Services in the myapp namespace.
-      community.kubernetes.k8s_info:
-        kind: Service
-        namespace: testminishift
-      register: myapp_services
+    - name: Download the Apache installer
+      win_get_url:
+        url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
+        dest: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+
+    - name: Install MSI
+      win_package:
+        path: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+        state: present
