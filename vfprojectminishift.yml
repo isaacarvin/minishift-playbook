@@ -17,6 +17,4 @@
         displayName: "{{project_display_name}}"
         description: "{{project_description}}"
       register: output
-  - debug: 
-      var = output
 
