@@ -1,18 +1,26 @@
 ---
-- name: minishift project create
-  hosts: all
+- name: DO create quotas
+  hosts: localhost
   gather_facts: false
   connection: local
+
+ 
 
   collections:
     - community.kubernetes
   tasks:
-  - name: Create project
+  - name: Create quotas for a project
     k8s:
       state: present
       inline:
-        kind: ProjectRequest
+        api_version: v1
+        kind: ResourceQuota
         metadata:
-          name: vodatestproject
-        displayName: vodademo
-        description: vodafone
+          name: "{{project_name}}"
+          namespace: "{{project_name}}"
+        spec:
+          hard:
+            pods: "4" 
+            limits.cpu: "2"
+            limits.memory: "2016Mib"
+            requests.storage: "3Gib"
