@@ -1,6 +1,6 @@
 ---
 - name: minishift project create
-  hosts: localhost
+  hosts: all
   gather_facts: false
   connection: local
 
