@@ -13,6 +13,6 @@
       inline:
         kind: ProjectRequest
         metadata:
-          name: test1
-        displayName: demo1
-        description: testdemo
+          name: vodatestproject
+        displayName: vodademo
+        description: vodafone
